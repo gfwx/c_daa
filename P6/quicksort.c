@@ -19,7 +19,7 @@ int partition(int *arr, int left, int right) {
 
     for (int i = left; i < right; ++i) {
         if (arr[i] < arr[pivot]) {
-            swap(arr + i, arr + left);
+            swap(arr + i, arr + store_idx);
             ++store_idx;
         }
     }
@@ -32,7 +32,7 @@ void qsort(int *arr, int left, int right) {
     if (left < right) {
         int pivot_idx = partition(arr, left, right);
         qsort(arr, left, pivot_idx - 1);
-        qsort(arr, pivot_idx, right);
+        qsort(arr, pivot_idx + 1, right);
     }
 }
 
